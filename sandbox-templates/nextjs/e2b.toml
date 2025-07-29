@@ -1,0 +1,17 @@
+# This is a config for E2B sandbox template.
+# You can use template ID (kfmf9hqtdddio2fgawhs) or template name (codewave-v1) to create a sandbox:
+
+# Python SDK
+# from e2b import Sandbox, AsyncSandbox
+# sandbox = Sandbox("codewave-v1") # Sync sandbox
+# sandbox = await AsyncSandbox.create("codewave-v1") # Async sandbox
+
+# JS SDK
+# import { Sandbox } from 'e2b'
+# const sandbox = await Sandbox.create('codewave-v1')
+
+team_id = "7310f1c9-568d-49d0-8a5c-bf3678a0cf25"
+start_cmd = "/compile_page.sh"
+dockerfile = "e2b.Dockerfile"
+template_name = "codewave-v1"
+template_id = "kfmf9hqtdddio2fgawhs"
