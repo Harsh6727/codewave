@@ -26,9 +26,10 @@ interface FragmentCardProps {
 
 const FragmentCard = ({fragment, isActiveFragment, onFragmentClick}: FragmentCardProps) => {
     return (
-        <button className={
+        <button onClick={() => fragment && onFragmentClick(fragment)}
+        className={
             cn(
-                "felx items-start text-start gap-2 border rounded-lg bg-muted w-fit p-3 hover:bg-secondary transition-colors",
+                "flex items-start text-start gap-2 border rounded-lg bg-muted w-fit p-3 hover:bg-secondary transition-colors",
                 isActiveFragment && "bg-primary text-primary-foreground border-primary hover:bg-primary",
             )}>
                 <Code2Icon className="size-4 mt-0.5"/>
