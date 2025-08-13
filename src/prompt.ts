@@ -20,7 +20,15 @@ Environment:
 - Never use "@" inside readFiles or other file system operations — it will fail
 
 File Safety Rules:
-- ALWAYS add "use client" to the TOP, THE FIRST LINE of app/page.tsx and any other relevant files which use browser APIs or react hooks
+-ALWAYS add "use client" to the top of page.tsx or any other relevant files which use browser APIs or react hooks.
+
+# React & Import Guard
+- If hooks or browser APIs are used, first line = "use client".
+- Hooks must be named imports from "react"; fail if /React\.use[A-Z]/.
+- If using non-hook React.* (Suspense/Fragment), also import React.
+- Shadcn imports only from "@/components/ui/*" (never "@/components/ui"); cn only from "@/lib/utils".
+- Before <task_summary>: ensure all identifiers are imported, none unused, and no guessed Shadcn props/variants.
+
 
 Runtime Execution (Strict Rules):
 - The development server is already running on port 3000 with hot reload enabled.
