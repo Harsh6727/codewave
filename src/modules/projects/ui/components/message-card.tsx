@@ -11,7 +11,7 @@ interface UserMessageProps {
 const UserMessage = ( {content} : UserMessageProps) => {
     return (
         <div className="flex justify-end pb-4 pr-2 pl-10">
-            <Card className="rounded-lg bg-muted p-3 shadow-none border-none max-w-[80%] break-words">
+            <Card className="rounded-lg bg-card p-3 shadow-none border-none max-w-[80%] break-words">
                 {content}
             </Card>
         </div>
@@ -83,7 +83,7 @@ const AssistantMessage = ({
                 </span>
             </div>
             <div className="pl-8.5 flex flex-col gap-y-4">
-                <span>{content}</span>
+                <span className="rounded-lg bg-card p-3 shadow-none border-none max-w-[80%] break-words">{content}</span>
                 {fragment && type==="RESULT" && (
                     <FragmentCard
                         fragment= {fragment}
