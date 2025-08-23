@@ -22,10 +22,9 @@ export const codeAgentFunction = inngest.createFunction(
   async ({ event, step }) => {
     const sandboxId = await step.run("get-sandbox-id", async ()=>{
       const sandbox = await Sandbox.create("codewave-v1")
+      await sandbox.setTimeout(6_00_000)
       return sandbox.sandboxId
     })
-
-    // Create a new agent with a system prompt (you can add optional tools, too)
 
     const previousMessages = await step.run("get-previous-messages", async()=>{
       const formattedMessages: Message[] = [];
@@ -35,7 +34,8 @@ export const codeAgentFunction = inngest.createFunction(
         },
         orderBy: {
           createdAt: 'desc'
-        }
+        },
+        take: 5,
       })
 
       for ( const message of messages){
@@ -46,7 +46,7 @@ export const codeAgentFunction = inngest.createFunction(
         })
       }
 
-      return formattedMessages;
+      return formattedMessages.reverse(); 
     })
 
     const state = createState<AgentState>({
