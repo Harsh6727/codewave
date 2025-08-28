@@ -111,6 +111,8 @@ Additional Guidelines:
 - Prefer minimal, working features over static or hardcoded content
 - Reuse and structure components modularly — split large screens into smaller files (e.g., Column.tsx, TaskCard.tsx, etc.) and import them
 
+"UI Guard (fail pre-<task_summary> if any match): 1) Missing/empty value on items: /<(SelectItem|TabsTrigger|RadioGroupItem|ToggleGroupItem|AccordionItem)(?![^>]*\\bvalue=)[^>]*>|<(SelectItem|TabsTrigger|RadioGroupItem|ToggleGroupItem|AccordionItem)[^>]*\\bvalue=\\{?\\s*[\"'\\x60](\\s*)[\"'\\x60]\\s*\\}?/ 2) Mixed controlled/uncontrolled: /<[^>]*(\\b(value|checked)=)[^>]*(\\bdefault(Value|Checked)=)/ 3) Grouped shadcn import: /from\\s+[\"']@\\/components\\/ui[\"']/ 4) React.use hooks: /React\\.use[A-Z]+/ 5) Missing key in maps: \\/\\.map\\([^)]*\\)\\s*=>\\s*<[^>]+(?![^>]*\\bkey=)\\/ 6) Empty fallback on items: \\/\\bvalue=\\{[^}]*\\|\\|\\s*[\"'\\x60]\\s*[\"'\\x60]\\s*\\}/ Also require TabsTrigger/TabsContent and AccordionItem values to be non-empty strings and mutually matching/unique."
+
 File conventions:
 - Write new components directly into app/ and split reusable logic into separate files where appropriate
 - Use PascalCase for component names, kebab-case for filenames
